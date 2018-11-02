@@ -13,27 +13,31 @@ it('should have a textarea and a button', () => {
     expect(wrapper.find('button').length).toBe(1);
 });
 
-it('should have textarea that user can type in', () => {
-    const value = 'type check';
-    wrapper.find('textarea').simulate('change', {
-        target: { value }
+describe('textarea and form', () => {
+    let value;
+    beforeEach(() => {
+        value = 'type check';
+        wrapper.find('textarea').simulate('change', {
+            target: { value }
+        });
+        wrapper.update();
     });
-    wrapper.update();
-    expect(wrapper.find('textarea').prop('value')).toBe(value);
-    expect(wrapper.state('comment')).toBe(value);
+
+    it('should have textarea that user can type in', () => {
+
+        expect(wrapper.find('textarea').prop('value')).toBe(value);
+        // expect(wrapper.state('comment')).toBe(value);
+    })
+
+    it('should be empty string in state comment after submit form', () => {
+        expect(wrapper.find('textarea').prop('value')).toBe(value);
+
+        wrapper.find('form').simulate('submit', {
+            preventDefault: () => { }
+        });
+        wrapper.update();
+        expect(wrapper.find('textarea').prop('value')).toBe('');
+        // expect(wrapper.state('comment')).toBe('');
+    })
 })
 
-it('should be empty string in state comment after submit form', () => {
-    const value = 'type check';
-    wrapper.find('textarea').simulate('change', {
-        target: { value }
-    });
-    wrapper.update();
-
-    wrapper.find('form').simulate('submit', {
-        preventDefault: () => { }
-    });
-    wrapper.update();
-    expect(wrapper.state('comment')).toBe('');
-
-}) 
