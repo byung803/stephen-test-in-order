@@ -1,8 +1,8 @@
-const reducer = (state = [], action) => {
-    switch (action.type) {
-        default:
-            return state;
-    }
-}
+import { combineReducers } from 'redux';
+import comments from './comments';
+
+const reducer = combineReducers({
+    comments
+});
 
 export default reducer;

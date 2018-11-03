@@ -2,7 +2,7 @@
 
 exports[`should test components index 1`] = `
 <div>
-  <CommentBox />
+  <Connect(CommentBox) />
   <CommentList />
 </div>
 `;

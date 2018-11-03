@@ -1,11 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import CommentBox from '../../components/CommentBox';
+import { CommentBox } from '../../components/CommentBox';
 
-let wrapper;
+let wrapper, saveComment;
 
 beforeEach(() => {
-    wrapper = shallow(<CommentBox />);
+    saveComment = jest.fn();
+    wrapper = shallow(<CommentBox saveComment={saveComment} />);
 })
 
 it('should have a textarea and a button', () => {
@@ -38,6 +39,14 @@ describe('textarea and form', () => {
         wrapper.update();
         expect(wrapper.find('textarea').prop('value')).toBe('');
         // expect(wrapper.state('comment')).toBe('');
+    })
+
+    it('should call saveComment action creator when submit', () => {
+        wrapper.find('form').simulate('submit', {
+            preventDefault: () => { }
+        });
+        wrapper.update();
+        expect(saveComment).toHaveBeenCalled();
     })
 })
 
