@@ -28,4 +28,8 @@ export class CommentBox extends React.Component {
     }
 }
 
-export default connect(null, saveComment)(CommentBox);
+// const mapDispatchToProps = (dispatch) => ({
+//     saveComment: (comment) => { dispatch(saveComment(comment)) }
+// })
+
+export default connect(null, { saveComment })(CommentBox);

@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`textarea and form should maintain snapshot 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <textarea
+    cols="30"
+    onChange={[Function]}
+    rows="10"
+    value="type check"
+  />
+  <div>
+    <button
+      type="submit"
+    >
+      Submit Text
+    </button>
+  </div>
+</form>
+`;

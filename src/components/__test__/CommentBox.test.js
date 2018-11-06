@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { CommentBox } from '../../components/CommentBox';
+import { CommentBox } from '../CommentBox';
 
 let wrapper, saveComment;
 
@@ -47,6 +47,10 @@ describe('textarea and form', () => {
         });
         wrapper.update();
         expect(saveComment).toHaveBeenCalled();
+    })
+
+    it('should maintain snapshot', () => {
+        expect(wrapper).toMatchSnapshot();
     })
 })
 
